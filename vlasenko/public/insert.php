@@ -12,13 +12,13 @@ exit;
  
 //(b) get and check input text 
 if (isset($_POST['Text1'])) {
-$a1=htmlspecialchars(' ' . $_POST['Text1'], true);
-//echo 'name=<' . $a1 . '><br/><br/>';
+$a1=htmlspecialchars($_POST['Text1'], true);
+//echo 'name=[' . $a1 . ']<br/><br/>';
                             }
 							
 if (isset($_POST['TextArea1'])) {
-$a2=htmlspecialchars(' ' . $_POST['TextArea1'], true);
-//echo 'text=<'.$a2.'><br/>';
+$a2=htmlspecialchars($_POST['TextArea1'], true);
+//echo 'text=['.$a2.']<br/>';
                                 }
 
 if (strlen($a1) <= 1) {
@@ -56,8 +56,8 @@ exit;       }
 
 mysqli_set_charset($link, 'utf8');
 
-$par1 = substr($a1,1);
-$par2 = substr($a2,1);
+$par1 = $a1;
+$par2 = $a2;
 
 $sql = "INSERT INTO articles (name, text, created_at) VALUES ('$par1', '$par2', NOW())";
 
